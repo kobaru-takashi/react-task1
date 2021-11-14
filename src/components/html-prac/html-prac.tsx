@@ -1,17 +1,40 @@
-import { useCallback, useState } from 'react';
+import React, { HTMLAttributes, useCallback, useState } from "react";
 
-export const HtmlPrac = () => {
-  const [id, setId] = useState('');
-  const [pass, setPass] = useState('');
+type Props = {
+  label1?: string;
+  label2?: string;
+  flag?: boolean;
+  onEnterPressKey?: () => void;
+} & HTMLAttributes<HTMLInputElement>;
 
-  const handleSubmit = useCallback(() => {
-    // なんか処理
-  }, []);
+export const HtmlPrac = (props: Props) => {
+  const { label1,label2, flag, onEnterPressKey, ...defaultProps } = props;
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleSubmit = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter" && onEnterPressKey) {
+        onEnterPressKey();
+        if (flag) {
+          setIsVisible(!isVisible);
+        }
+      }
+    },
+    [isVisible]
+  );
 
   return (
     <div>
-      {/* formタグ */}
-      {/* form無し */}
+      <div>
+        <form>
+          {label1 && isVisible && <div>{label1}</div>}
+          <input {...defaultProps} onKeyPress={handleSubmit} />
+        </form>
+      </div>
+      <div>
+        {label2 && isVisible && <div>{label2}</div>}
+        <input />
+      </div>
     </div>
   );
 };
