@@ -19,14 +19,16 @@ const Login = () => {
   // TODO Stateを使って書いてみる
   const history = useHistory();
   const theme = createTheme();
+  const [usernames, setUsernames] = useState("");
+  const [passwords, setPasswords] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+
     const data = new FormData(event.currentTarget);
     const username = data.get("username");
     const password = data.get("password");
-    console.log(username,password);
 
     const result = usernameDummy === username && passwordDummy === password;
 

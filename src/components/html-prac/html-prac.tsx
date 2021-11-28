@@ -8,7 +8,7 @@ type Props = {
 } & HTMLAttributes<HTMLInputElement>;
 
 export const HtmlPrac = (props: Props) => {
-  const { label1,label2, flag, onEnterPressKey, ...defaultProps } = props;
+  const { label1, label2, flag, onEnterPressKey, ...defaultProps } = props;
   const [isVisible, setIsVisible] = useState(true);
 
   const handleSubmit = useCallback(
@@ -24,7 +24,7 @@ export const HtmlPrac = (props: Props) => {
   );
 
   return (
-    <div>
+    <>
       <div>
         <form>
           {label1 && isVisible && <div>{label1}</div>}
@@ -33,8 +33,8 @@ export const HtmlPrac = (props: Props) => {
       </div>
       <div>
         {label2 && isVisible && <div>{label2}</div>}
-        <input />
+        <input  {...defaultProps} onKeyPress={handleSubmit} />
       </div>
-    </div>
+    </>
   );
 };

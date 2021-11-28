@@ -20,12 +20,12 @@ const B = ({ callback }: Prop) => {
 };
 
 const A = () => {
-  const [state, setstate] = useState(0);
+  const [state, setState] = useState(0);
 
   return (
     <div>
       <div>結果 : {state}</div>
-      <B callback={(v) => setstate((val) => val + v)} />
+      <B callback={(v) => setState((val) => val + v)} />
     </div>
   );
 };

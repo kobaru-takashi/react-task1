@@ -7,9 +7,12 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TagFacesSharpIcon from '@mui/icons-material/TagFacesSharp';
+import { MyPageVer } from "./my-page-ver"
+import { useState } from "react";
 
 export const MyPage = () => {
   const theme = createTheme();
+  const [text, setText]= useState("")
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,6 +53,7 @@ export const MyPage = () => {
             }}
           >
             <h1>MyPage へようこそ</h1>
+            <MyPageVer />
           </Box>
         </Grid>
       </Grid>

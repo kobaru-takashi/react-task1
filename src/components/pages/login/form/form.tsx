@@ -41,10 +41,9 @@ export const Form = (props: Props) => {
   );
 };
 
-{
-  /* <div>
-{/* LoginのComponentの中身を記述s */
-}
+//
+// LoginのComponentの中身を記述
+
 // id {id}
 // pass {pass}
 // Form
