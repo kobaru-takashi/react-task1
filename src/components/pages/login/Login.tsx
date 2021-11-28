@@ -1,4 +1,3 @@
-
 import { useHistory } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -10,6 +9,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import { LoginStateVar } from "./login-state-ver";
+import { useState } from "react";
 
 const usernameDummy = "admin@";
 const passwordDummy = "1234";
@@ -18,9 +19,13 @@ const Login = () => {
   // TODO Stateを使って書いてみる
   const history = useHistory();
   const theme = createTheme();
+  const [usernames, setUsernames] = useState("");
+  const [passwords, setPasswords] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+
     const data = new FormData(event.currentTarget);
     const username = data.get("username");
     const password = data.get("password");
@@ -69,26 +74,8 @@ const Login = () => {
               noValidate
               sx={{ mt: 1 }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
+              {/* <LoginStateVar usernameState={username} passwordState={password}/> */}
+              <LoginStateVar />
               <Button
                 type="submit"
                 fullWidth

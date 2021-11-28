@@ -1,8 +1,9 @@
-import { Router } from './router/Router';
-import { ConnectedRouter } from 'connected-react-router';
-import { history } from './app/store';
-import { useState } from 'react';
-
+import { Router } from "./router/Router";
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "./app/store";
+import { useState } from "react";
+import { HtmlPrac } from "./components/html-prac/html-prac";
+import { Form } from "./components/pages/login/form/form";
 
 type Prop = {
   callback: (v: number) => void;
@@ -19,14 +20,12 @@ const B = ({ callback }: Prop) => {
 };
 
 const A = () => {
-  const [state, setstate] = useState(0);
+  const [state, setState] = useState(0);
 
   return (
     <div>
-      <div>
-        結果 : {state}
-      </div>
-      <B callback={(v) => setstate((val)=> val + v)} />
+      <div>結果 : {state}</div>
+      <B callback={(v) => setState((val) => val + v)} />
     </div>
   );
 };
@@ -35,7 +34,7 @@ const App = () => {
   return (
     <>
       <div className="App">
-        <A />
+        {/* <A /> */}
         <ConnectedRouter history={history}>{Router}</ConnectedRouter>
       </div>
     </>
